@@ -47,12 +47,18 @@ Full inspection of the container
  ``` docker inspect container_name ```
 ### ---------------------------------------------------------------------------------------
 To build a image with specific purpose or task
+
 Step 1: Create a Dockerfile (with the same file name)
+
 Step 2: Add tasks which needs to be performed when image is used (Eg: Dockerfile in the master)
 
 ``` build --tag image_name:latest . ```
 
 ### ---------------------------------------------------------------------------------------
+To move between the 7 stages of a container i.e)exited, Running, Paused, Restarting, OOMKilled, Dead
+to be filled
+### ---------------------------------------------------------------------------------------
+
 
 ##### Type 1 Storage
 Make a directory on local system on root
