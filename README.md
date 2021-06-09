@@ -1,6 +1,51 @@
 #### Docker
+
+To install docker on Linux system
+
+``` sudo apt-get install docker.io ```
+
+Granting permission to docker_user (Mandatory or have to use sudo) & **REBOOT**
+
+``` sudo usermod -aG docker ${USER} ```
+
+### ---------------------------------------------------------------------------------------
+To list the containers
+
+``` docker container ls -a ```
+
+To list the docker iamges
+
+``` docker images ```
+### ---------------------------------------------------------------------------------------
+To make an image
+
+To remove an image
+
+``` docker image rm image_name ```
+### ---------------------------------------------------------------------------------------
+To run a container (checks locally for the image file, if not present pulls from docker_hub)
+ 
+ ``` docker run --name container_name alpine:latest ```
+ 
+ To run a container with detached to run the container in background (d), interactive terminal (it)
+ when detached (d) is added to argument an operation like ping needs to be added
+
+``` docker run -dit --name container_name alpine:latest ping -c 10 localhost ```
+
+The above command pings local host 10 times
+
+Full inspection of the container
+
+ ``` docker inspect container_name ```
+ 
+To remove a container
+
+``` docker container rm container_name ```
+
+### ---------------------------------------------------------------------------------------
+
 ##### Type 1 Storage
-Make a directory on local system
+Make a directory on local system on root
 
 ``` sudo mkdir docker_volume```
 
@@ -8,9 +53,11 @@ Run the docker container
 
 ``` docker run -dit --name container_name -v /volume_name_on_container:/disk1 alpine:latest ```
 
-Enter container and navigate to disk1. Any files which we create on disk1 will be saved on docker_volume(Directory on local) & files created on the directory on local will reflect on the ccontainer
+To enter the container
 
 ``` docker exec -it mydocker sh  ```
+
+Enter container and navigate to disk1. Any files which we create on disk1 will be saved on docker_volume(Directory on local) & files created on the directory on local will reflect on the container
 
 sh = alpine shell terminal | /bin/bash/ = Ubuntu
 ### ---------------------------------------------------------------------------------------
@@ -18,26 +65,29 @@ sh = alpine shell terminal | /bin/bash/ = Ubuntu
 Creating container with a new volume
 
  ``` docker run -dit --name container_name --volume /myapp alpine:latest ```
+ 
+ Files can be added inside container by entering it using following command
 
-Full inspection of the container
-
- ``` docker inspect 5c1df0 ```
+``` docker exec -it mydocker sh  ```
 
 Limited inspection on the container with storage details
 
- ``` docker inspect -f '{{json .Mounts}}' 5c1df0 ```
+ ``` docker inspect -f '{{json .Mounts}}' container_name ```
 ### ---------------------------------------------------------------------------------------
 ##### Type 3 Storage
 Creating a Volume for type 3
+
 ``` docker volume create myvolume ```
 
 To list all the available volumes
 
 ``` docker volume ls ```
-Creating container with the volume which was created
 
-``` docker container run -dit --name mycentos --volume myvolume:/test  alpine:latest ```
+Mapping container with the volume which was created
 
+``` docker container run -dit --name container_name --volume myvolume:/directory_name_inside_container  alpine:latest ```
 
-``` docker inspect -f '{{json .Mounts}}' 28e1b5 ```
+Limited inspection on the container with storage details
+
+``` docker inspect -f '{{json .Mounts}}' container_name ```
 ### ---------------------------------------------------------------------------------------
