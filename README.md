@@ -13,11 +13,13 @@ To list the containers
 
 ``` docker container ls -a ```
 
+To remove a container
+
+``` docker container rm container_name ```
+
 To list the docker iamges
 
 ``` docker images ```
-### ---------------------------------------------------------------------------------------
-To make an image
 
 To remove an image
 
@@ -37,10 +39,12 @@ The above command pings local host 10 times
 Full inspection of the container
 
  ``` docker inspect container_name ```
- 
-To remove a container
+### ---------------------------------------------------------------------------------------
+To build a image with specific purpose or task
+Step 1: Create a Dockerfile (with the same file name)
+Step 2: Add tasks which needs to be performed when image is used (Eg: Dockerfile in the master)
 
-``` docker container rm container_name ```
+``` build --tag image_name:latest . ```
 
 ### ---------------------------------------------------------------------------------------
 
