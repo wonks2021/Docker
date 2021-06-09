@@ -8,6 +8,10 @@ Granting permission to docker_user (Mandatory or have to use sudo) & **REBOOT**
 
 ``` sudo usermod -aG docker ${USER} ```
 
+File path for docker files saved on local
+
+**/var/lib/docker**
+
 ### ---------------------------------------------------------------------------------------
 To list the containers
 
@@ -20,6 +24,8 @@ To remove a container
 To list the docker iamges
 
 ``` docker images ```
+
+**Note: image ID begins with sha:256**
 
 To remove an image
 
