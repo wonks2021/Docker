@@ -1,10 +1,13 @@
-FROM ping2:latest
+FROM ubuntu:latest 
+## pulling an existing image
 
 ENV HOME /root
+## To initiate from root
 
 LABEL ubuntu=myubuntu
 
 ENTRYPOINT ["/bin/ping","-c","3"]
+##Commands which runs when container is created
 
 RUN useradd -m -G root testuser1
 
