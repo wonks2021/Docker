@@ -12,6 +12,10 @@ File path for docker files saved on local
 
 **/var/lib/docker**
 
+Information regarding docker
+
+``` docker info ```
+
 ### ---------------------------------------------------------------------------------------
 To list the containers
 
@@ -107,3 +111,15 @@ Limited inspection on the container with storage details
 
 ``` docker inspect -f '{{json .Mounts}}' container_name ```
 ### ---------------------------------------------------------------------------------------
+To create a mount storage
+``` docker run -dit --name container_name --mount source=myvol2,target=/test nginx:latest ```
+
+Test = Directory to be created on storage; myvol2Directory to be created on local
+### ---------------------------------------------------------------------------------------
+CNM: Container Network Model
+CNI: Container Network Interface
+List the number of docker networks
+
+``` docker network ls ```
+
+``` docker bridge
