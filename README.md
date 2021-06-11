@@ -115,6 +115,7 @@ Limited inspection on the container with storage details
 ``` docker inspect -f '{{json .Mounts}}' container_name ```
 ### ---------------------------------------------------------------------------------------
 To create a mount storage (copying existing data to a container)
+
 ``` docker run -dit --name container_name --mount source=myvol2,target=/test nginx:latest ```
 
 Test - Directory to be created on storage; myvol2 - Directory to be created on local
