@@ -12,7 +12,7 @@ File path for docker files saved on local
 
 **/var/lib/docker**
 
-Information regarding docker
+Complete information regarding docker
 
 ``` docker info ```
 
@@ -49,6 +49,9 @@ The above command pings local host 10 times
 Full inspection of the container
 
  ``` docker inspect container_name ```
+ 
+ To remove all the containers
+ ``` docker container rm $(docker container ls -aq) ```
 ### ---------------------------------------------------------------------------------------
 To build a image with specific purpose or task
 
@@ -111,15 +114,50 @@ Limited inspection on the container with storage details
 
 ``` docker inspect -f '{{json .Mounts}}' container_name ```
 ### ---------------------------------------------------------------------------------------
-To create a mount storage
+To create a mount storage (copying existing data to a container)
 ``` docker run -dit --name container_name --mount source=myvol2,target=/test nginx:latest ```
 
-Test = Directory to be created on storage; myvol2Directory to be created on local
+Test - Directory to be created on storage; myvol2 - Directory to be created on local
+
+Limited inspection on the container with storage details
+
+ ``` docker inspect -f '{{json .Mounts}}' container_name ```
 ### ---------------------------------------------------------------------------------------
-CNM: Container Network Model
-CNI: Container Network Interface
+**CNM: Container Network Model** (similar abbreviation CNI: Container Network Interface)
+
 List the number of docker networks
 
 ``` docker network ls ```
 
-``` docker bridge
+To inspect a network which gives complete information of container connected to a specific network
+
+```  docker network inspect network_name ```
+
+Note: All containers without any specification fall under bridge network
+
+Create a container without any network
+
+``` docker run -ti --network none alpine ```
+
+Create a container connected only to host
+
+``` docker run -ti --network host alpine ```
+
+To get ip address of a container
+
+``` docker container inspect container_name --format "{{ .NetworkSettings.Networks.bridge.IPAddress }}" ```
+
+To display the complete network details of a container
+
+``` docker container inspect container_name --format "{{ json .NetworkSettings.Networks }}" ```
+
+Creating a subnet/internal network
+
+``` docker network create --driver bridge --internal --subnet 192.168.30.0/24 --label internal-only internal-only ```
+
+docker container run --network internal-only -dti --name intc1 alpine sh
+docker container run --network internal-only -dti --name intc2 alpine sh
+### ---------------------------------------------------------------------------------------
+
+
+
