@@ -1,4 +1,16 @@
 ### ---------------------------------------------------------------------------------------
+List the number of docker networks
+
+``` docker network ls ```
+
+Create a container with specific network
+
+``` docker container run --network network_name -dti --name container_name alpine sh ```
+
+Inspect a docker network
+
+``` docker network inspect network_name ```
+### ---------------------------------------------------------------------------------------
 **CNM: Container Network Model** (similar abbreviation CNI: Container Network Interface)
 
 To get ip address of a container
@@ -10,14 +22,6 @@ To inspect a network which gives complete information of container connected to 
 ```  docker network inspect network_name ```
 
 Note: All containers without any specification fall under bridge network
-
-List the number of docker networks
-
-``` docker network ls ```
-
-Create a container with specific network
-
-``` docker container run --network network_name -dti --name container_name alpine sh ```
 
 Create a container without any network
 
