@@ -40,8 +40,11 @@ Example of creating two containers with same network
 ``` docker container run --network internal-only -dti --name container_name1 alpine sh ```
 ``` docker container run --network internal-only -dti --name container_name2 alpine sh ```
 ### ---------------------------------------------------------------------------------------
+Example diagram for company network with two containers as public
+![image](https://user-images.githubusercontent.com/80840002/123650844-98ef5a00-d848-11eb-8645-6184c1bfefe0.png)
 
 Connecting containers with different multi network access
+
 1. Create two networks
 
 ``` docker network create netwwork_1 ```
@@ -50,12 +53,32 @@ Connecting containers with different multi network access
 
 2. Run a container with netwwork_1 with sleep action
 
-``` docker container run -d --name container_name --network netwwork_1 alpine sleep 3000 ```
+``` docker container run -d --name container_name1 --network netwwork_1 alpine sleep 3000 ```
 
 3. Connect the container with netwwork_2
 
 ``` docker network connect netwwork_2 container_name ```
 
-4. To list the connected networks
+4. Create container 2 and 3 with two different network to eshablish gateway connection
+
+``` docker container run -d --name container_name2 --network network2 --cap-add NET_ADMIN alpine sleep 3000 ```
+
+``` docker container run -d --name container_name3 --network network1 --cap-add NET_ADMIN alpine sleep 3000 ```
+
+6. To find the ip address & route of a container
 
 ``` docker exec container_name ip add ```
+
+``` docker exec container_name ip route ```
+
+7. Connecting two containers through gatway connection
+
+``` docker exec container_name3 route add -net 172.18.0.0 netmask 255.255.255.0 gw 172.19.0.2 ```
+
+Note: 
+
+172.18.0.0: Container_name2 ip address -1
+
+172.19.0.2: Container_name3 (GW = SRC - 1)
+
+
