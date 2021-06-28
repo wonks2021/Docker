@@ -40,3 +40,22 @@ Example of creating two containers with same network
 ``` docker container run --network internal-only -dti --name container_name1 alpine sh ```
 ``` docker container run --network internal-only -dti --name container_name2 alpine sh ```
 ### ---------------------------------------------------------------------------------------
+
+Connecting containers with different multi network access
+1. Create two networks
+
+``` docker network create netwwork_1 ```
+
+``` docker network create netwwork_2 ```
+
+2. Run a container with netwwork_1 with sleep action
+
+``` docker container run -d --name container_name --network netwwork_1 alpine sleep 3000 ```
+
+3. Connect the container with netwwork_2
+
+``` docker network connect netwwork_2 container_name ```
+
+4. To list the connected networks
+
+``` docker exec container_name ip add ```
