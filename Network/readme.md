@@ -1,4 +1,4 @@
-### ---------------------------------------------------------------------------------------
+##### ---------------------------------------------------------------------------------------------------------------------------
 List the number of docker networks
 
 ``` docker network ls ```
@@ -10,7 +10,7 @@ Create a container with specific network
 Inspect a docker network
 
 ``` docker network inspect network_name ```
-### ---------------------------------------------------------------------------------------
+##### ---------------------------------------------------------------------------------------------------------------------------
 **CNM: Container Network Model** (similar abbreviation CNI: Container Network Interface)
 
 To get ip address of a container
@@ -43,7 +43,7 @@ Example of creating two containers with same network
 
 ``` docker container run --network internal-only -dti --name container_name1 alpine sh ```
 ``` docker container run --network internal-only -dti --name container_name2 alpine sh ```
-### ---------------------------------------------------------------------------------------
+##### ---------------------------------------------------------------------------------------------------------------------------
 Example diagram for company network with two containers as public
 ![image](https://user-images.githubusercontent.com/80840002/123650844-98ef5a00-d848-11eb-8645-6184c1bfefe0.png)
 
