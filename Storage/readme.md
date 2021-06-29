@@ -14,7 +14,7 @@ To enter the container
 Enter container and navigate to disk1. Any files which we create on disk1 will be saved on docker_volume(Directory on local) & files created on the directory on local will reflect on the container
 
 sh = alpine shell terminal | /bin/bash/ = Ubuntu
-##### ---------------------------------------------------------------------------------------------------------------------------
+##### ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #### Type 2 Storage
 Creating container with a new volume
 
@@ -27,7 +27,7 @@ Creating container with a new volume
 Limited inspection on the container with storage details
 
  ``` docker inspect -f '{{json .Mounts}}' container_name ```
-##### ---------------------------------------------------------------------------------------------------------------------------
+##### ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ##### Type 3 Storage
 Creating a Volume for type 3
 
@@ -44,7 +44,7 @@ Mapping container with the volume which was created
 Limited inspection on the container with storage details
 
 ``` docker inspect -f '{{json .Mounts}}' container_name ```
-##### ---------------------------------------------------------------------------------------------------------------------------
+##### ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 To create a mount storage (copying existing data to a container)
 
 ``` docker run -dit --name container_name --mount source=myvol2,target=/test nginx:latest ```
@@ -54,3 +54,4 @@ Test - Directory to be created on storage; myvol2 - Directory to be created on l
 Limited inspection on the container with storage details
 
  ``` docker inspect -f '{{json .Mounts}}' container_name ```
+##### ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
