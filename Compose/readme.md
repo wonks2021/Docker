@@ -9,7 +9,7 @@ File name should be saved as docker-compose.yml to intitate the compose containe
 ##### ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 To list the docker-compose containers
 
-``` docker-compose ps ```
+``` docker ps ```
 
 To build the images present on yaml file
 
@@ -31,9 +31,9 @@ To inspect a compose containeer
 
 ``` docker-compose inspect container_name ```
 
-To enter the compose container
+To enter the container
 
-``` docker-compose exec container_name ```
+``` docker exec -it container_name sh ```
 
 To restart the compose container
 
@@ -59,19 +59,21 @@ Compose container configuration list or yaml file
 
 To list the compose container servies
 
-``` docker-compose config --services ```
+``` docker-compose -f filename.yaml config --services ```
 
 To list the compose container volumes attached
 
-``` docker-compose config --volumes ```
-
-
-
-
+``` docker-compose -f filename.yaml config --volumes ```
 ##### ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-##### ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-##### ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-##### ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Load Balancing when multi container is deployed
+
+Steps for Load balancer
+
+- Have load balancer establised in a yaml file
+
+- All the services should be redirected to a single load balancer port
+
+- Run the docker-compose with the load balancer file
 ##### ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ##### ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
