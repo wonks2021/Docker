@@ -7,6 +7,10 @@ The above link consists of a model docker-compose
 
 File name should be saved as docker-compose.yml to intitate the compose container
 ##### ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+To install docker-compose
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04
+
 To list the docker-compose containers
 
 ``` docker ps ```
