@@ -34,6 +34,14 @@ To list the docker iamges
 To remove an image
 
 ``` docker image rm image_name ```
+
+To remove all images
+
+```docker rmi $(sudo docker images -aq) --force```
+
+To remove docker exit containers
+
+```docker rm$(docker ps --filter status=exited -q)```
 ##### ---------------------------------------------------------------------------------------------------------------------------
 To run a container (checks locally for the image file, if not present pulls from docker_hub)
  
