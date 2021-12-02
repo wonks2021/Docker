@@ -41,7 +41,7 @@ To remove all images
 
 To remove docker exit containers
 
-```docker rm$(docker ps --filter status=exited -q)```
+```docker rm $(docker ps --filter status=exited -q)```
 ##### ---------------------------------------------------------------------------------------------------------------------------
 To run a container (checks locally for the image file, if not present pulls from docker_hub)
  
