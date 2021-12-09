@@ -26,6 +26,7 @@ RUN apt-get install -y aspnetcore-runtime-6.0
 RUN apt-get install -y dotnet-runtime-6.0
 
 COPY * ./
+WORKDIR dotnet
 RUN dotnet restore
 RUN dotnet clean
 RUN dotnet build
