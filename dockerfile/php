@@ -1,0 +1,18 @@
+FROM ubuntu:latest
+
+
+RUN apt-get update
+
+RUN apt install php-fpm
+CMD systemctl status php7.4-fpm
+RUN apt install nginx
+CMD systemctl status nginx
+
+RUN mkdir dotnet
+RUN cd /dotnet
+COPY Program.cs MyApp.csproj dotnet/
+WORKDIR dotnet
+RUN dotnet clean
+RUN dotnet restore
+RUN dotnet build
+RUN dotnet run
